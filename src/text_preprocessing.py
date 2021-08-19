@@ -68,6 +68,7 @@ def _preprocess(messages):
     )
 
     preprocessed_data = preprocessor.fit_transform(messages['message'])
+    print("*************Processed data***************", preprocessed_data)
     dump(preprocessor, 'output/preprocessor.joblib')
     dump(preprocessed_data, 'output/preprocessed_data.joblib')
     return preprocessed_data

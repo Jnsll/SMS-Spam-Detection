@@ -32,6 +32,16 @@ def train_classifier(classifier, X_train, y_train):
 def predict_labels(classifier, X_test):
     return classifier.predict(X_test)
 
+def dev_june():
+    raw_data = _load_data()
+    preprocessed_data = load('output/preprocessed_data.joblib')
+
+    print(preprocessed_data)
+
+
+
+
+
 def main():
 
     raw_data = _load_data()
@@ -93,4 +103,4 @@ def main():
     dump(classifiers['Decision Tree'], 'output/model.joblib')
 
 if __name__ == "__main__":
-    main()
+    dev_june()
