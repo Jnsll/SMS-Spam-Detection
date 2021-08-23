@@ -77,32 +77,15 @@ def _preprocess(messages):
 
 def prepare(message):
     preprocessor = load('output/preprocessor.joblib')
-    return preprocessor.transform([message])
+    return preprocessor.transform([message]) 
 
-
-def extract_sub_dataset(messages, new_number_of_lines):
-    '''
-        TO DO : description of the function
-    '''
-    selected_lines = random.sample(range(0, len(messages)-1), new_number_of_lines) # Can the second argument be chosen in the random selection? TO CHECK!
-    new_dataset_messages = messages.iloc[selected_lines]
-    return new_dataset_messages
-
-    
-
-def main(number_lines):
+def main():
     messages = _load_data()
-    messages = extract_sub_dataset(messages, number_lines)
-
     print('\n################### Processed Messages ###################\n')
     with pd.option_context('expand_frame_repr', False):
         print(messages)
     preprocessed_data = _preprocess(messages)
-    print(preprocessed_data)
+    #print(preprocessed_data)
 
 if __name__ == "__main__":
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-nb', type=int, help='an integer for the number of lines in the new dataset.') #metavar='N', 
-    args = parser.parse_args()
-    main(args.nb)
+    main()
