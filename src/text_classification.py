@@ -16,7 +16,7 @@ from joblib import dump, load
 import matplotlib
 import matplotlib.pyplot as plt
 from text_preprocessing import _load_data
-from modify_dataset import extract_sub_dataset_from_new_number_of_rows
+from modify_dataset import extract_dataset_and_raw_data_from_number_of_rows
 
 
 
@@ -43,9 +43,11 @@ def dev_june(number_of_rows=15):
     '''
     raw_data = _load_data()
     preprocessed_data = load('output/preprocessed_data.joblib')
-    print(preprocessed_data)
-    new_preprocessed_data = extract_sub_dataset_from_new_number_of_rows(preprocessed_data, number_of_rows)
-    print(new_preprocessed_data)
+    #print(preprocessed_data)
+    #print(new_preprocessed_data)
+    new_preprocessed_data, new_raw_data = extract_dataset_and_raw_data_from_number_of_rows(preprocessed_data, raw_data, number_of_rows)
+    print(new_preprocessed_data.get_shape())
+    print(len(new_raw_data))
 
 
 def main():
